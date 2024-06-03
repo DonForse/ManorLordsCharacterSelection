@@ -1,11 +1,14 @@
-public enum ProfileEnum
+namespace Features.Profiles
 {
-    BaldGuy,
-    GreenDamsel,
-    ArmoredDaddy,
-    OldBetty,
-    Asshole,
-    JoffreyBaratheon,
-    Eunuch,
-    GuyWithATowel
+    public enum ProfileEnum
+    {
+        BaldGuy,
+        GreenDamsel,
+        ArmoredDaddy,
+        OldBetty,
+        Asshole,
+        JoffreyBaratheon,
+        Eunuch,
+        GuyWithATowel
+    }
 }
