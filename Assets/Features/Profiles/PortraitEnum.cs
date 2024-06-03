@@ -1,14 +1,15 @@
 namespace Features.Profiles
 {
-    public enum ProfileEnum
+    public enum PortraitEnum
     {
         BaldGuy,
         GreenDamsel,
         ArmoredDaddy,
         OldBetty,
+        GuyWithATowel,
         Asshole,
         JoffreyBaratheon,
         Eunuch,
-        GuyWithATowel
+        GuyWithABlueTowel
     }
 }

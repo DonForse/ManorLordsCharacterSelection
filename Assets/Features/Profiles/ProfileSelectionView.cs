@@ -4,16 +4,16 @@ namespace Features.Profiles
 {
     public class ProfileSelectionView : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private ProfilePortraitSelectionView profilePortraitSelectionView;
+
+        private void OnEnable()
         {
-        
+            profilePortraitSelectionView.ProfileSelected += OnProfileSelected;
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnProfileSelected(object sender, PortraitData e)
         {
-        
+            Debug.Log($"Selected: {e.Portrait}");
         }
     }
 }

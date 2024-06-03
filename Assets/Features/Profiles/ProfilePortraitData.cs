@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Features.Profiles
 {
     [Serializable]
-    public class ProfileData
+    public class PortraitData
     {
-        public ProfileEnum Profile;
-        public Sprite Portrait;
+        public PortraitEnum Portrait;
+        public Sprite Image;
     }
 }
