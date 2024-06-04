@@ -8,5 +8,6 @@ namespace Features.Profiles
     {
         public PortraitEnum Portrait;
         public Sprite Image;
+        public string Name;
     }
 }
