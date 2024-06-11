@@ -15,3 +15,9 @@ MonoBehaviour:
   CoatsOfArms:
   - CoatOfArm: 0
     Image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    FlagViewPrefab: {fileID: 503536730222185946, guid: 95612ad66dd36d8449e9b317558f0529,
+      type: 3}
+  - CoatOfArm: 1
+    Image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    FlagViewPrefab: {fileID: 7000717052694081836, guid: 209b834d17fdc93448b4aebf970b9e99,
+      type: 3}

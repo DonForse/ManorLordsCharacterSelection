@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Features.Profiles.Flags
 {
@@ -10,11 +9,14 @@ namespace Features.Profiles.Flags
         public event EventHandler<CoatOfArmData> CoatOfArmSelected;
         
         [SerializeField] private CoatsOfArmsDataScriptableObject coatsOfArmsDataScriptableObject;
-        [Space] [SerializeField] private Image selectedFlag;
+        [Space] [SerializeField] private Transform selectedFlagContainer;
         [Space] [SerializeField] private Transform profileCoatOfArmsContainer;
         [SerializeField] private ProfileCoatOfArmView profileCoatOfArmViewPrefab;
+        [SerializeField] private ItemsSelection textureSelection;
+        [SerializeField] private ItemsSelection logoSelection;
         
         private List<ProfileCoatOfArmView> _profilesViews;
+        private ProfileFlagView _instantiatedFlag;
 
         private void OnEnable()
         {
@@ -30,6 +32,20 @@ namespace Features.Profiles.Flags
             }
 
             SetSelectedCoatOfArm(coatsOfArmsDataScriptableObject.CoatsOfArms[0]);
+            textureSelection.ItemSelected += OnTextureSelected;
+            logoSelection.ItemSelected += OnLogoSelected;
+
+        }
+
+        private void OnLogoSelected(object sender, int e)
+        {
+            _instantiatedFlag.SetLogo(e);
+            // throw new NotImplementedException();
+        }
+
+        private void OnTextureSelected(object sender, int e)
+        {
+            _instantiatedFlag.SetTexture(e);
         }
 
         private void ClearProfileViews()
@@ -54,6 +70,17 @@ namespace Features.Profiles.Flags
             CoatOfArmSelected?.Invoke(this, e);
         }
         
-        private void SetSelectedCoatOfArm(CoatOfArmData e) => selectedFlag.sprite = coatsOfArmsDataScriptableObject.Get(e.CoatOfArm).Image;
+        private void SetSelectedCoatOfArm(CoatOfArmData e)
+        {
+            _instantiatedFlag = null;
+            foreach (Transform child in selectedFlagContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            
+            var coatOfArmData = coatsOfArmsDataScriptableObject.Get(e.CoatOfArm);
+            _instantiatedFlag = Instantiate(coatOfArmData.FlagViewPrefab, selectedFlagContainer);
+            _instantiatedFlag.SetCoatOfArm(coatOfArmData);
+        }
     }
 }
